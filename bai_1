@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main(void)
+{
+    // Your code here!
+   // Chương trình C in ra các số nguyên có 2 chữ số là bội của 7
+  for (int i = 10; i <= 99; i++) 
+  {
+    // Kiểm tra xem số đó có chia hết cho 7 hay không
+    if (i % 7 == 0) 
+    {
+      // In số ra màn hình
+      printf("%d ", i);
+    }
+  }
+
+  return 0;
+}
