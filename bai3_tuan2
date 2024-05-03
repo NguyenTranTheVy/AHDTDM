@@ -1,0 +1,45 @@
+from ._anvil_designer import SortIntegerFormTemplate
+from anvil import alert
+import SortIntegerModule
+
+class SortIntegerForm(SortIntegerFormTemplate):
+    def btn_sort_click(self, **event_args):
+        """
+        Sự kiện khi người dùng nhấn nút "Sắp xếp".
+        """
+        try:
+            # Lấy dãy số từ TextBox và chuyển đổi thành mảng số nguyên
+            input_text = self.txt_input_numbers.text
+            numbers = list(map(int, input_text.split(',')))
+            
+            # Sắp xếp dãy số bằng thuật toán Insertion Sort
+            SortIntegerModule.insertion_sort(numbers)
+            
+            # Hiển thị kết quả sắp xếp trên TextBox
+            self.txt_sorted_numbers.text = ', '.join(map(str, numbers))
+        except Exception as e:
+            alert("Đã xảy ra lỗi: " + str(e))
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+from anvil import alert, open_form
+import SortIntegerModule
+
+def btn_sort_click(self, **event_args):
+    try:
+        # Lấy dãy số từ TextBox và chuyển đổi thành mảng số nguyên
+        input_text = self.txt_input_numbers.text
+        numbers = list(map(int, input_text.split(',')))
+        
+        # Sắp xếp dãy số bằng thuật toán Insertion Sort
+        SortIntegerModule.insertion_sort(numbers)
+        
+        # Hiển thị kết quả sắp xếp trên TextBox
+        self.txt_sorted_numbers.text = ', '.join(map(str, numbers))
+    except Exception as e:
+        alert("Đã xảy ra lỗi: " + str(e))
